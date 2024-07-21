@@ -1,0 +1,48 @@
+{
+  "type": "record",
+  "name": "StudentEvent",
+  "namespace": "com.student.tracker.avro",
+  "fields": [
+    {
+      "name": "students",
+      "type": {
+        "type": "array",
+        "items": {
+          "type": "record",
+          "name": "Student",
+          "fields": [
+            {
+              "name": "id",
+              "type": "int"
+            },
+            {
+              "name": "name",
+              "type": "string"
+            },
+            {
+              "name": "school",
+              "type": {
+                "type": "record",
+                "name": "School",
+                "fields": [
+                  {
+                    "name": "schoolId",
+                    "type": "int"
+                  },
+                  {
+                    "name": "schoolName",
+                    "type": "string"
+                  },
+                  {
+                    "name": "location",
+                    "type": "string"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

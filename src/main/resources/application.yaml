@@ -1,0 +1,41 @@
+spring:
+  jackson:
+    default-property-inclusion: NON_NULL
+  kafka:
+    producer:
+      bootstrap-servers: localhost:19092
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      topics:
+#        dlqTopic:
+#          name:
+         sourceTopic:
+            name: source_topic
+      properties:
+#        sasl:
+#          jaas:
+#            config: org.apache.kafka.common.security.plain.PlainLoginModule required username='$ConnectionString' password='';
+#          mechanism: PLAIN
+#        security:
+#          protocol: SASL_SSL
+        schema:
+          registry:
+            url: http://localhost:8081
+#            name: confluent
+#            basic:
+#              auth:
+#                credentials:
+#                  source: USER_INFO
+#                user:
+#                  info: username:password
+        auto:
+          register:
+            schemas: false
+        value:
+          subject:
+            name:
+              strategy: io.confluent.kafka.serializers.subject.RecordNameStrategy
+#        linger:
+#          ms: 10
+#        batch:
+#          size: 100
